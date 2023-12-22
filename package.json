@@ -1,0 +1,30 @@
+{
+    "name": "issue-checker",
+    "version": "0.0.0",
+    "description": "",
+    "private": true,
+    "main": "index.js",
+    "scripts": {
+        "bundle": "ncc build src/index.ts --license licenses.txt"
+    },
+    "dependencies": {
+        "@actions/core": "^1.10.1",
+        "@actions/github": "^6.0.0"
+    },
+    "exports": {
+        ".": "./dist/index.js"
+    },
+    "engines": {
+        "node": ">=20"
+    },
+    "keywords": [
+        "github-action",
+        "action"
+    ],
+    "author": "Gustav Eikaas",
+    "license": "ISC",
+    "devDependencies": {
+        "@vercel/ncc": "^0.38.1",
+        "typescript": "^5.3.3"
+    }
+}

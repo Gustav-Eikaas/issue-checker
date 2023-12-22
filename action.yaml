@@ -1,0 +1,22 @@
+name: "👮Issue checker"
+description: "Ensures a pull request is linked to an issue"
+author: "Gustav Eikaas"
+
+# Add your action's branding here. This will appear on the GitHub Marketplace.
+branding:
+    icon: "heart"
+    color: "red"
+
+# Define your inputs here.
+inputs:
+    pr-number:
+        description: "PR number"
+        required: true
+    token:
+        description: "Github token. Defaults to ${{ secrets.GITHUB_TOKEN }}",
+        required: true
+        default: ${{ secrets.GITHUB_TOKEN }}
+
+runs:
+    using: node20
+    main: dist/index.js
