@@ -15,7 +15,6 @@ inputs:
     token:
         description: "Github token. Defaults to secrets.GITHUB_TOKEN"
         required: true
-        default: ${{ secrets.GITHUB_TOKEN }}
 
 runs:
     using: node20
