@@ -1,4 +1,5 @@
-import { getInput, setSecret, setFailed, notice, warning } from "@actions/core";
+import { getOctokit, context } from "@actions/github";
+import { getInput, setSecret, setFailed, notice, warning, info } from "@actions/core";
 type Octo = ReturnType<typeof getOctokit>;
 
 export async function run() {
@@ -6,7 +7,6 @@ export async function run() {
         const prNumber = parseInt(getInput("pr-number"));
         const token = getInput("token");
         setSecret(token);
-
         const client = getOctokit(token);
         checkIssues(client, prNumber);
     } catch (error) {
@@ -14,9 +14,6 @@ export async function run() {
         if (error instanceof Error) setFailed(error.message);
     }
 }
-
-import { getOctokit, context } from "@actions/github";
-import { info } from "@actions/core";
 
 async function checkIssues(client: Octo, pr: number) {
     const pullRequests = await client.graphql(
